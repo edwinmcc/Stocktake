@@ -7,7 +7,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="BatchName"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="7dp"
         android:layout_marginLeft="10dp"
         android:textSize="20dp"
         />
@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:text="0"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="7dp"
         android:layout_marginRight="20dp"
         android:textSize="20dp"
         />
@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/lbl_BatchName"
         android:text="Last Used : 04/04/2016"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
+        android:paddingBottom="7dp"
         android:layout_marginLeft="10dp" />
 </RelativeLayout>

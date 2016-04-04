@@ -6,32 +6,29 @@
         android:id="@+id/lbl_NewBatchName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Batch Name"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="5dp"
+        />
+    <Button
+        android:id="@+id/btnAddBatch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Batch"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="15dp"
+        android:layout_alignParentRight="true"
         />
     <EditText
         android:id="@+id/textNewBatchName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/lbl_NewBatchName"
+        android:layout_marginLeft="10dp"
         android:layout_toLeftOf="@id/btnAddBatch"
-        android:layout_marginLeft="7dp"
-        />
-    <Button
-        android:id="@+id/btnAddBatch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="12dp"
-        android:layout_alignParentRight="true"
         />
     <ListView
         android:id="@+id/listBatchNames"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_below="@id/textNewBatchName" >
-    </ListView>
+        android:layout_below="@id/textNewBatchName" />
 </RelativeLayout>

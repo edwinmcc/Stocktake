@@ -10,7 +10,9 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import edu.java.android.stocktake.R;
@@ -21,6 +23,12 @@ import edu.java.android.stocktake.R;
 public class BatchModel extends BaseAdapter {
 
     private List<BatchEntry> batchEntryList=new ArrayList<BatchEntry>();
+    private SimpleDateFormat sdf=null;
+
+    public BatchModel()
+    {
+        sdf=new SimpleDateFormat("dd/MM/yyyy hh:mm a");
+    }
 
     @Override
     public int getCount() {
@@ -35,6 +43,15 @@ public class BatchModel extends BaseAdapter {
     @Override
     public long getItemId(int position) {
         return 0;
+    }
+
+    private String getLastUsedDateString(Date dt)
+    {
+        if(dt==null)
+        {
+            return "";
+        }
+        return "Last Used: "+sdf.format(dt);
     }
 
     @Override
@@ -62,7 +79,7 @@ public class BatchModel extends BaseAdapter {
         }
         bevh.getBatchName().setText(be.getBatchName());
         bevh.getItemCount().setText(be.getItemCount().toString());
-        bevh.getLastUsedDate().setText(be.getLastAccessedDate().toString());
+        bevh.getLastUsedDate().setText(getLastUsedDateString(be.getLastAccessedDate()));
         return convertView;
     }
 
