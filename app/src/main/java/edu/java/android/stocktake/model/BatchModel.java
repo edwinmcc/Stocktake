@@ -1,14 +1,11 @@
 package edu.java.android.stocktake.model;
 
 import android.content.Context;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,7 +19,7 @@ import edu.java.android.stocktake.R;
  */
 public class BatchModel extends BaseAdapter {
 
-    private List<BatchEntry> batchEntryList=new ArrayList<BatchEntry>();
+    private Batches batches=null;
     private SimpleDateFormat sdf=null;
 
     public BatchModel()
@@ -32,12 +29,12 @@ public class BatchModel extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return batchEntryList.size();
+        return batches.getSize();
     }
 
     @Override
     public Object getItem(int position) {
-        return batchEntryList.get(position);
+        return batches.getBatch(position);
     }
 
     @Override
@@ -57,12 +54,12 @@ public class BatchModel extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Context context=parent.getContext();
-        BatchEntry be=batchEntryList.get(position);
-        BatchEntryViewHolder bevh=null;
+        Batch be=batches.getBatch(position);
+        BatchViewHolder bevh=null;
         if(convertView==null)
         {
             //COMMENT: convertView corresponds to a row in a ListView.  If it is null, it is a new entry.  It needs to be constructed.
-            bevh=new BatchEntryViewHolder();
+            bevh=new BatchViewHolder();
             LayoutInflater inflater=(LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.batch_entry,parent,false);
             TextView txtBatchName=(TextView)convertView.findViewById(R.id.lbl_BatchName);
@@ -75,7 +72,7 @@ public class BatchModel extends BaseAdapter {
         }
         else
         {
-            bevh=(BatchEntryViewHolder)convertView.getTag();
+            bevh=(BatchViewHolder)convertView.getTag();
         }
         bevh.getBatchName().setText(be.getBatchName());
         bevh.getItemCount().setText(be.getItemCount().toString());
@@ -84,13 +81,13 @@ public class BatchModel extends BaseAdapter {
     }
 
     // COMMENT: Methods to add/remove entries from List
-    public void addEntry(BatchEntry entry)
+    public void addEntry(Batch entry)
     {
         batchEntryList.add(entry);
         notifyDataSetChanged();
     }
 
-    public void removeEntry(BatchEntry entry)
+    public void removeEntry(Batch entry)
     {
         batchEntryList.remove(entry);
         notifyDataSetChanged();
